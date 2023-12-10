@@ -1,7 +1,9 @@
+import {generarContenidoHTMLLogin} from '../components/views/login.js';
+import {generarContenidoHTMLRegistro} from '../components/views/registro.js';
+import {generarContenidoHTML4EnRaya} from "../components/views/cuatroView.js";
+import {profileForm} from "../components/views/profile.js";
+
 export {router};
-import {generarContenidoHTMLLogin} from '../components/views/loginView.js';
-import {generarContenidoHTMLRegistro} from '../components/views/registroView.js';
-import {generarContenidoHTML4EnRaya} from "../components/views/4enRaya";
 
 const router = async (ruta) => {
 
@@ -9,16 +11,24 @@ const router = async (ruta) => {
 
     switch (ruta) {
         case '#/':
+            contenedor.innerHTML = '';
             contenedor.innerHTML = `<h1>Home</h1>`;
             break;
         case '#/login':
-            contenedor.innerHTML = generarContenidoHTMLLogin();
+            contenedor.innerHTML = '';
+            contenedor.append(generarContenidoHTMLLogin());
             break;
         case '#/register':
-            contenedor.innerHTML = generarContenidoHTMLRegistro();
+            contenedor.innerHTML = '';
+            contenedor.append(generarContenidoHTMLRegistro());
             break;
         case '#/4enRaya':
-            contenedor.innerHTML = generarContenidoHTML4EnRaya(6,7);
+            contenedor.innerHTML = '';
+            contenedor.append(generarContenidoHTML4EnRaya());
+            break;
+        case '#/profile':
+            contenedor.innerHTML = '';
+            contenedor.append(profileForm());
             break;
         default:
             window.location.hash = '#/';

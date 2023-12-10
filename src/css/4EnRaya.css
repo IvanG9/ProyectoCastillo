@@ -13,7 +13,7 @@
         flex-direction: column-reverse;
         align-items: center;
         margin: 10px;
-        
+
     }
 
     .cell {
@@ -65,11 +65,28 @@
 
 
     }
-    #div_tablero{
+    #div_tablero {
+        margin-top: 20px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
+    #reiniciar-button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    #reiniciar-button:hover {
+        background-color: #45a049;
+    }
 
 

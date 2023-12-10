@@ -22,3 +22,55 @@ h1 {
 main {
     background-color: #f0f0f0;
 }
+
+.container {
+    width: 50%;
+    margin: auto;
+    padding: 16px;
+}
+
+h1 {
+    text-align: center;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type=text], input[type=password], input[type=file] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.avatar_profile {
+    margin-top: 20px;
+}

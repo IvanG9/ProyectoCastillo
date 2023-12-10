@@ -1,8 +1,12 @@
-export { generarContenidoHTMLLogin };
+import {loginUser} from "../../services/users";
 
-    function generarContenidoHTMLLogin() {
-    return `
-        <div class="container">
+export {generarContenidoHTMLLogin};
+
+function generarContenidoHTMLLogin() {
+
+    const divLogin = document.createElement('div');
+
+    divLogin.innerHTML = `
             <h1>Login</h1>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
@@ -13,6 +17,9 @@ export { generarContenidoHTMLLogin };
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
+                                        <p id="errors"></p>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="email">Correo electrónico:</label>
                                         <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
                                     </div>
@@ -21,13 +28,27 @@ export { generarContenidoHTMLLogin };
                                         <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                        <button type="submit" class="btn btn-primary" id="submit">Iniciar sesión</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-        </div>
     `;
+
+    divLogin.querySelector('#submit').addEventListener('click', async (event) => {
+        event.preventDefault();
+        const email = divLogin.querySelector('#email').value;
+        const password = divLogin.querySelector('#password').value;
+        loginUser(email, password).then((status) => {
+            if (status.success) window.location.hash = '#/';
+            else {
+                divLogin.querySelector('#errors').innerHTML = status.errorText;
+            }
+        });
+    });
+
+    return divLogin;
+
 }

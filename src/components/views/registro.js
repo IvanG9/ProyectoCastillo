@@ -1,9 +1,13 @@
-export { generarContenidoHTMLRegistro };
+import {registerUser} from "../../services/users";
 
-    function generarContenidoHTMLRegistro() {
-    return `
-    <div class="container">
-    <div class="row">
+export {generarContenidoHTMLRegistro};
+
+function generarContenidoHTMLRegistro() {
+
+    const divRegister = document.createElement('div');
+
+    divRegister.innerHTML =
+        `
         <div class="col d-flex justify-content-center">
             <div class="card mt-5 bg-light">
                 <div class="card-header">
@@ -11,10 +15,6 @@ export { generarContenidoHTMLRegistro };
                 </div>
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <label for="name">Nombre:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
-                        </div>
                         <div class="form-group">
                             <label for="email">Correo electrónico:</label>
                             <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
@@ -28,13 +28,22 @@ export { generarContenidoHTMLRegistro };
                             <input type="password" class="form-control" id="confirm-password" placeholder="Confirme su contraseña">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <button type="submit" class="btn btn-primary" id="submit">Registrarse</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
     `;
+
+    divRegister.querySelector('#submit').addEventListener('click', async (event) => {
+        event.preventDefault();
+        const email = divRegister.querySelector('#email').value;
+        const password = divRegister.querySelector('#password').value;
+        const dataLogin = registerUser(email, password);
+        console.log(dataLogin);
+    });
+
+    return divRegister;
+
 }

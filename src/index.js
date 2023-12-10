@@ -3,11 +3,18 @@ import _ from 'lodash';
 import './css/style.css';
 import './css/styles.scss';
 import './css/4EnRaya.css';
+import './css/styleLogin.css';
+
 import * as bootstrap from 'bootstrap';
+
 import {router} from './routers/router.js';
+import {menu} from './components/views/menu.js';
 
 (() => {
+
     document.addEventListener("DOMContentLoaded", async () => {
+
+        document.querySelector('#menu').innerHTML = menu();
 
         // Función para manejar el evento hashchange
         function manejarCambioRuta() {
@@ -19,7 +26,7 @@ import {router} from './routers/router.js';
         window.addEventListener('hashchange', manejarCambioRuta);
         // Llamar a la función router inicialmente para cargar la ruta actual
         manejarCambioRuta();
-
     });
+
 })();
 
