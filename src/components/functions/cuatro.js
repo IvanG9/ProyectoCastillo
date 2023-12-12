@@ -2,8 +2,8 @@ export {gameState, verificarGanador, manejarClic, resetGame, startGame, startGam
 
 const gameState = () => ({
     nombreJugadores: {
-        1: [],
-        2: []
+        1: "",
+        2: ""
     },
     cont: 0,
     juegoTerminado: false,
@@ -29,6 +29,8 @@ function startGameUser(state, user) {
     for (let i = 0; i < stateCopy.filas; i++) {
         stateCopy.tablero[i] = Array(stateCopy.columnas).fill('empty');
     }
+
+    stateCopy.nombreJugadores[1] = user;
 
     return stateCopy;
 

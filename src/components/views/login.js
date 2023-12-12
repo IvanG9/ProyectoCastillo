@@ -25,7 +25,7 @@ function generarContenidoHTMLLogin() {
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Contraseña:</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                                        <input type="password" class="form-control" id="current-password" placeholder="Ingrese su contraseña">
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary" id="submit">Iniciar sesión</button>
@@ -40,7 +40,7 @@ function generarContenidoHTMLLogin() {
     divLogin.querySelector('#submit').addEventListener('click', async (event) => {
         event.preventDefault();
         const email = divLogin.querySelector('#email').value;
-        const password = divLogin.querySelector('#password').value;
+        const password = divLogin.querySelector('#current-password').value;
         loginUser(email, password).then((status) => {
             if (status.success) window.location.hash = '#/';
             else {

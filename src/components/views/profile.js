@@ -8,7 +8,7 @@ function profileForm() {
 
     getProfile().then((dataProfile) => {
         dataProfile = dataProfile[0];
-        console.log(dataProfile);
+        //console.log(dataProfile);
 
         divProfile.innerHTML = `
     
