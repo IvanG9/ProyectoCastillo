@@ -1,6 +1,6 @@
 import {fileRequest, getData, getFileRequest, loginSupabase, signUpSupabase, updateData} from "./http";
 
-export {registerUser, loginUser,getProfile,updateProfile}
+export {registerUser, loginUser, getProfile, updateProfile}
 
 function registerUser(email, password) {
     const status = {success: false};
@@ -12,14 +12,13 @@ function registerUser(email, password) {
     } catch (err) {
         console.log(err);
         status.success = false;
-        //status.errorText = err.error_description;
         status.errorText = err;
     }
     return status;
 }
 
 async function loginUser(email, password) {
-    const status = { success: false };
+    const status = {success: false};
     try {
         const dataLogin = await loginSupabase(email, password);
         console.log(dataLogin);
@@ -46,7 +45,7 @@ async function getProfile() {
     const uid = localStorage.getItem('uid');
     const responseGet = await getData(`profiles?id=eq.${uid}&select=*`, access_token);
     console.log(responseGet);
-    const { avatar_url } = responseGet[0];
+    const {avatar_url} = responseGet[0];
     responseGet[0].avatar_blob = false;
     if (avatar_url) {
         const imageBlob = await getFileRequest(avatar_url, access_token);
@@ -69,11 +68,9 @@ async function updateProfile(profile) {
 
     const avatarResponse = await fileRequest(`/storage/v1/object/avatars/avatar${uid}.png`, formImg, access_token);
 
-    // console.log(avatarResponse);
     profile.avatar_url = avatarResponse.urlAvatar;
     delete profile.avatar;
 
     const responseUpdate = await updateData(`profiles?id=eq.${uid}&select=*`, access_token, profile);
-    // console.log(responseUpdate);
-    // createData('profiles',access_token,profile);
+
 }

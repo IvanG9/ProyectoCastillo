@@ -1,6 +1,7 @@
 import {generarContenidoHTMLLogin} from '../components/views/login.js';
 import {generarContenidoHTMLRegistro} from '../components/views/registro.js';
 import {generarContenidoHTML4EnRaya} from "../components/views/cuatroView.js";
+import {generarContenidoHTMLHome} from "../components/views/home";
 import {profileForm} from "../components/views/profile.js";
 
 export {router};
@@ -12,8 +13,11 @@ const router = async (ruta) => {
     switch (ruta) {
         case '#/':
             contenedor.innerHTML = '';
-            contenedor.innerHTML = `<h1>Home</h1>`;
+            contenedor.append(generarContenidoHTMLHome());
             break;
+        case  '#/top':
+            contenedor.innerHTML = '';
+            break
         case '#/login':
             contenedor.innerHTML = '';
             contenedor.append(generarContenidoHTMLLogin());

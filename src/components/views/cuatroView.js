@@ -1,5 +1,4 @@
 import * as cuatro from '../functions/cuatro.js';
-import {gameState} from "../functions/cuatro.js";
 
 export {generarContenidoHTML4EnRaya};
 

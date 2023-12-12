@@ -1,14 +1,14 @@
-export {gameState, verificarGanador, manejarClic, resetGame, startGame}
+export {gameState, verificarGanador, manejarClic, resetGame, startGame, startGameUser}
 
 const gameState = () => ({
-    playersTiles: {
+    nombreJugadores: {
         1: [],
         2: []
     },
     cont: 0,
     juegoTerminado: false,
     jugadorActual: 'red',
-    tablero: [], // { tileFigure, tile, position, player}
+    tablero: [],
     filas: 6,
     columnas: 7
 });
@@ -22,6 +22,18 @@ function startGame(state) {
     return stateCopy;
 
 }
+
+function startGameUser(state, user) {
+
+    const stateCopy = structuredClone(state);
+    for (let i = 0; i < stateCopy.filas; i++) {
+        stateCopy.tablero[i] = Array(stateCopy.columnas).fill('empty');
+    }
+
+    return stateCopy;
+
+}
+
 
 function resetGame(state) {
 

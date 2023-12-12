@@ -3,7 +3,6 @@ import _ from 'lodash';
 import './css/style.css';
 import './css/styles.scss';
 import './css/4EnRaya.css';
-import './css/styleLogin.css';
 
 import * as bootstrap from 'bootstrap';
 
