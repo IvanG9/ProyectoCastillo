@@ -2,7 +2,7 @@ import {getProfile} from "./users";
 import {createData, getData, updateData} from "./http";
 import * as cuatro from "../components/functions/cuatro";
 
-export {create_game, search_game, list_my_games};
+export {create_game, search_game, list_my_games,get_game,updateGame};
 
 async function create_game() {
     try {
@@ -29,6 +29,17 @@ async function create_game() {
         console.error("Error durante la creación del juego:", error);
     }
 }
+
+async function get_game(id) {
+    try {
+        const access_token = localStorage.getItem('access_token');
+        return await getData(`game_state?id=eq.${id}&select=*`, access_token);
+    } catch (error) {
+        console.error('Error al obtener el estado del juego:', error);
+        return null;
+    }
+}
+
 
 async function search_game() {
     try {
@@ -101,3 +112,4 @@ async function list_my_games() {
     }
 
 }
+

@@ -3,13 +3,16 @@ import {generarContenidoHTMLRegistro} from '../components/views/registro.js';
 import {generarContenidoHTML4EnRaya} from "../components/views/cuatroView.js";
 import {generarContenidoHTMLHome} from "../components/views/home";
 import {profileForm} from "../components/views/profile.js";
+import {get_game, list_my_games} from "../services/cuatrohttp";
+import {getProfile} from "../services/users";
 
 export {router};
 
 const router = async (ruta) => {
 
     let contenedor = document.querySelector("#main");
-
+    let id = ruta.split("?")[1];
+    ruta = ruta.split("?")[0];
     switch (ruta) {
         case '#/':
             contenedor.innerHTML = '';
@@ -28,7 +31,7 @@ const router = async (ruta) => {
             break;
         case '#/4enRaya':
             contenedor.innerHTML = '';
-            contenedor.append(generarContenidoHTML4EnRaya());
+            contenedor.append(generarContenidoHTML4EnRaya(id));
             break;
         case '#/profile':
             contenedor.innerHTML = '';

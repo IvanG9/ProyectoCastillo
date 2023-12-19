@@ -32,11 +32,11 @@
 
     /* Estilos para los colores de los jugadores */
     .cell.red {
-        background-color: #FF5733;
+        background-color: red;
     }
 
     .cell.yellow {
-        background-color: #FFC300;
+        background-color: yellow;
     }
 
     h1 {

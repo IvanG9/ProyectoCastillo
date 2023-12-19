@@ -1,3 +1,5 @@
+import {updateGame} from "../../services/cuatrohttp";
+
 export {gameState, verificarGanador, manejarClic, resetGame, startGame, startGameUser}
 
 const gameState = () => ({
@@ -90,7 +92,7 @@ function verificarGanador(state, fila, columna) {
     return false;
 }
 
-function manejarClic(state, fila, columna) {
+async function manejarClic(state, fila, columna, id) {
 
     if (state.juegoTerminado) return;
 
@@ -116,4 +118,6 @@ function manejarClic(state, fila, columna) {
             break;
         }
     }
+
+    const a = await updateGame(id, state)
 }
